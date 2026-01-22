@@ -71,7 +71,7 @@ Model performance evaluated using:
 
 ---
 
-## Project Structure
+## 🗂️ Repository Structure
 
 ```
 
@@ -80,6 +80,3 @@ Bitcoin-Price-Regression-Analysis/
 ├── README.md
 
 ```
-
----
-
