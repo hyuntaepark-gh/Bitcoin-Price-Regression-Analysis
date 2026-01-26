@@ -1,82 +1,181 @@
-# 📈 Bitcoin Price Regression Analysis
+# 📈 Bitcoin Price Regression Analysis (Time-Series ML)
 
-## Overview
-This project analyzes **Bitcoin price movements** using regression-based modeling techniques.  
-The goal is to explore how key market variables relate to Bitcoin prices and to evaluate the predictive performance of different regression approaches.
-
-This project demonstrates skills in:
-- Data preprocessing
-- Exploratory Data Analysis (EDA)
-- Regression modeling
-- Model evaluation and interpretation
+> A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and macro indicators, focusing on **proper validation**, **interpretability**, and **realistic evaluation**.
 
 ---
 
-## Project Objectives
-- Understand historical Bitcoin price behavior
-- Identify important explanatory variables
-- Build and evaluate regression models
-- Interpret results from a business and analytical perspective
+## 🎯 Project Goal
+
+This project answers the question:
+
+**“Can we predict Bitcoin’s next-day movement using regression models and engineered time-series features?”**
+
+Instead of chasing unrealistic “perfect price prediction,” this project emphasizes:
+
+- Time-series safe validation (**no data leakage**)
+- Feature engineering + interpretability
+- Baseline comparison + realistic evaluation
+- Reproducible workflow
 
 ---
 
-## Dataset
-The dataset includes historical Bitcoin market data such as:
-- Price-related metrics (e.g., Open, High, Low, Close)
-- Trading volume
-- Time-based features
+## 🧩 Problem Definition
 
-> Data source: Public cryptocurrency market data  
-> Time granularity: Daily observations
+### Target Variable
+We predict **next-day log return**:
 
----
+\[
+y_{t+1} = \log\left(\frac{Price_{t+1}}{Price_t}\right)
+\]
 
-## Methodology
+Why returns instead of raw price?
 
-### 1. Data Preparation
-- Handling missing values
-- Feature selection and transformation
-- Splitting data into training and testing sets
-
-### 2. Exploratory Data Analysis (EDA)
-- Trend analysis of Bitcoin prices
-- Correlation analysis between variables
-- Visualization of price movements and distributions
-
-### 3. Modeling
-Regression techniques used:
-- Linear Regression  
-- (Optional) Extended regression or feature-enhanced models
-
-Model performance evaluated using:
-- R² Score
-- Mean Squared Error (MSE)
+- Bitcoin price is **non-stationary**
+- Returns are more stable for regression modeling
+- Easier to evaluate **direction + volatility**
 
 ---
 
-## Key Findings
-- Bitcoin prices show strong temporal trends and volatility
-- Certain market variables have meaningful relationships with price movement
-- Regression models provide a baseline but highlight the limitations of linear approaches for highly volatile assets
+## 📂 Dataset
+
+This project uses Bitcoin historical price data and optional macro/market indicators.
+
+### Data Sources
+- Bitcoin price & volume: public crypto market data
+- Macro indicators (optional): U.S. economic/market signals (e.g., SP500, VIX, DXY, rates)
+
+> ⚠️ Raw data is not included in this repository.  
+> You can reproduce results by downloading the same sources and following the notebook steps.
 
 ---
 
-## Technologies Used
-- **Python**
-- pandas
-- numpy
-- matplotlib / seaborn
-- scikit-learn
-- Jupyter Notebook
+## 🔧 Feature Engineering
+
+Features are designed to capture **momentum**, **trend**, and **volatility**.
+
+### Price-based Features
+- Lagged log returns
+- Moving averages (MA7, MA30)
+- Rolling volatility (7-day, 30-day std)
+- Momentum indicators (RSI-style signals)
+
+### Volume-based Features
+- Volume change rate
+- Rolling volume z-score
+
+### Macro / Market Features (optional)
+- SP500 return
+- VIX change
+- USD Index (DXY)
+- Interest rate proxy
 
 ---
 
-## 🗂️ Repository Structure
+## 🧠 Models Used
+
+This project compares multiple regression models:
+
+### Baselines
+- Naive baseline: **Tomorrow = Today**
+- Linear Regression
+
+### Regularized Regression
+- Ridge Regression
+- Lasso Regression
+
+### Non-linear Models (optional)
+- Random Forest Regressor
+- Gradient Boosting / XGBoost (if added)
+
+---
+
+## ✅ Evaluation Strategy (Time-Series Safe)
+
+Random train/test split can cause **data leakage** in time-series problems.
+
+### Validation Method
+- Chronological split (train → test by time)
+- Walk-forward (rolling) evaluation (recommended extension)
+
+### Metrics
+Regression metrics:
+- MAE
+- RMSE
+- MAPE (optional)
+
+Directional metric:
+- **Directional Accuracy** (up/down correctness)
+
+---
+
+## 📊 Key Results (Placeholder)
+
+> Replace this section with your final results after training.
+
+| Model | MAE | RMSE | Direction Accuracy |
+|------|-----|------|-------------------|
+| Naive Baseline | - | - | - |
+| Linear Regression | - | - | - |
+| Ridge | - | - | - |
+| Lasso | - | - | - |
+
+📌 **Takeaway:**  
+The goal is not “perfect prediction,” but **measurable improvement over baseline + explainable drivers**.
+
+---
+
+## 📌 Business Interpretation
+
+This project demonstrates how regression modeling can support:
+
+- Risk monitoring
+- Trend detection
+- Decision support
+- Scenario analysis (what signals drive BTC movement?)
+
+---
+
+## 🔍 What This Project Demonstrates
+
+- Time-series regression modeling
+- Feature engineering for financial data
+- Model comparison (baseline → regularization → non-linear)
+- Proper validation to prevent leakage
+- Business-focused interpretation and evaluation
+
+---
+
+## ⚠️ Limitations
+
+Bitcoin markets are highly volatile and influenced by external events.
+
+- Regime shifts happen frequently
+- Macro indicators may lag or be incomplete
+- Prediction accuracy can degrade over time
+
+This project is intended for **learning and portfolio demonstration**, not financial advice.
+
+---
+
+## 🗂️ Repository Structure (Recommended Upgrade)
 
 ```
 
 Bitcoin-Price-Regression-Analysis/
-├── Bitcoin Price Regression Analysis.ipynb
-├── README.md
+│
+├── notebooks/
+│   └── bitcoin_regression.ipynb
+│
+├── src/                     # (optional)
+│   ├── data.py
+│   ├── features.py
+│   ├── train.py
+│   └── evaluate.py
+│
+├── reports/
+│   └── figures/
+│
+├── requirements.txt
+└── README.md
 
 ```
