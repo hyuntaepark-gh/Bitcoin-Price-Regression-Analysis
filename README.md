@@ -1,14 +1,14 @@
 # 📈 Bitcoin Price Regression Analysis (Time-Series ML)
 
-> A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and macro indicators, focusing on **proper validation**, **interpretability**, and **realistic evaluation**.
+> A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and engineered features, focusing on **time-series-safe validation**, **interpretability**, and **realistic evaluation**.
 
 ---
 
 ## 🎯 Project Goal
 
-This project answers the question:
+This project answers:
 
-**“Can we predict Bitcoin’s next-day movement using regression models and engineered time-series features?”**
+**“Can we predict Bitcoin’s next-day movement using regression models and time-series features?”**
 
 Instead of chasing unrealistic “perfect price prediction,” this project emphasizes:
 
@@ -42,7 +42,7 @@ This project uses Bitcoin historical price data and optional macro/market indica
 
 ### Data Sources
 - Bitcoin price & volume: public crypto market data
-- Macro indicators (optional): U.S. economic/market signals (e.g., SP500, VIX, DXY, rates)
+- Macro indicators (optional): U.S. market signals (e.g., SP500, VIX, DXY, rates)
 
 > ⚠️ Raw data is not included in this repository.  
 > You can reproduce results by downloading the same sources and following the notebook steps.
