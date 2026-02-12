@@ -1,5 +1,16 @@
 # 📈 Bitcoin Price Regression Analysis (Time-Series ML)
 
+![Python](https://img.shields.io/badge/Python-Time%20Series%20ML-3776AB?logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Feature%20Engineering-150458?logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Computing-013243?logo=numpy&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Regression-F7931E?logo=scikitlearn&logoColor=white)
+![Time Series](https://img.shields.io/badge/Time--Series-Modeling-6A1B9A)
+![Financial ML](https://img.shields.io/badge/Financial-ML-2E7D32)
+![Feature Engineering](https://img.shields.io/badge/Feature-Engineering-00897B)
+![Walk Forward Validation](https://img.shields.io/badge/Walk--Forward-Validation-1E88E5)
+![Explainable Modeling](https://img.shields.io/badge/Explainable-Regression-795548)
+![Quant Analytics](https://img.shields.io/badge/Quant-Analytics-FF7043)
+
 > A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and engineered features, focusing on **time-series-safe validation**, **interpretability**, and **realistic evaluation**.
 
 ---
