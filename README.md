@@ -11,182 +11,268 @@
 ![Explainable Modeling](https://img.shields.io/badge/Explainable-Regression-795548)
 ![Quant Analytics](https://img.shields.io/badge/Quant-Analytics-FF7043)
 
-> A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and engineered features, focusing on **time-series-safe validation**, **interpretability**, and **realistic evaluation**.
+A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and engineered features, focusing on **time-series-safe validation**, **interpretability**, and **realistic evaluation**.
 
 ---
 
-## 🎯 Project Goal
+# 🎯 Project Goal
 
-This project answers:
+This project explores the question:
 
-**“Can we predict Bitcoin’s next-day movement using regression models and time-series features?”**
+**Can Bitcoin’s next-day movement be predicted using regression models and time-series features?**
 
-Instead of chasing unrealistic “perfect price prediction,” this project emphasizes:
+Instead of chasing unrealistic “perfect price prediction”, the project focuses on:
 
-- Time-series safe validation (**no data leakage**)
-- Feature engineering + interpretability
-- Baseline comparison + realistic evaluation
-- Reproducible workflow
+- Time-series safe validation (preventing data leakage)
+- Feature engineering from market signals
+- Model comparison with proper baselines
+- Explainable modeling and interpretable features
 
 ---
 
-## 🧩 Problem Definition
+# 🧩 Problem Definition
 
 ### Target Variable
-We predict **next-day log return**:
 
-\[
-y_{t+1} = \log\left(\frac{Price_{t+1}}{Price_t}\right)
-\]
+The model predicts **next-day log return**.
 
-Why returns instead of raw price?
+log_return(t+1) = log( Price(t+1) / Price(t) )
 
-- Bitcoin price is **non-stationary**
-- Returns are more stable for regression modeling
-- Easier to evaluate **direction + volatility**
+### Why returns instead of price?
+
+- Bitcoin prices are **non-stationary**
+- Returns provide **more stable statistical properties**
+- Better suited for regression and forecasting models
 
 ---
 
-## 📂 Dataset
+# 📂 Dataset
 
-This project uses Bitcoin historical price data and optional macro/market indicators.
+This project uses Bitcoin historical market data.
 
 ### Data Sources
-- Bitcoin price & volume: public crypto market data
-- Macro indicators (optional): U.S. market signals (e.g., SP500, VIX, DXY, rates)
 
-> ⚠️ Raw data is not included in this repository.  
-> You can reproduce results by downloading the same sources and following the notebook steps.
+- Bitcoin price and trading volume
+- Optional macro signals such as:
+  - S&P 500 return
+  - VIX volatility index
+  - USD index (DXY)
+  - Interest rate indicators
+
+Raw datasets are not included in this repository.  
+Results can be reproduced by downloading the same data sources and running the notebook pipeline.
 
 ---
 
-## 🔧 Feature Engineering
+# 🔧 Feature Engineering
 
-Features are designed to capture **momentum**, **trend**, and **volatility**.
+The model uses engineered features capturing **trend, momentum, and volatility**.
 
-### Price-based Features
+### Price Features
+
 - Lagged log returns
 - Moving averages (MA7, MA30)
-- Rolling volatility (7-day, 30-day std)
-- Momentum indicators (RSI-style signals)
+- Rolling volatility (7-day and 30-day standard deviation)
+- Momentum indicators
 
-### Volume-based Features
+### Volume Features
+
 - Volume change rate
-- Rolling volume z-score
+- Rolling volume Z-score
 
-### Macro / Market Features (optional)
-- SP500 return
+### Optional Market Indicators
+
+- S&P 500 return
 - VIX change
-- USD Index (DXY)
+- USD index movement
 - Interest rate proxy
+
+These features aim to capture **market dynamics influencing short-term Bitcoin movement**.
 
 ---
 
-## 🧠 Models Used
+# 🧠 Modeling Workflow
 
-This project compares multiple regression models:
+The modeling pipeline follows a quantitative ML workflow:
+
+Raw Data  
+→ Feature Engineering  
+→ Time-Series Train/Test Split  
+→ Model Training  
+→ Prediction  
+→ Evaluation
+
+Key steps include:
+
+- log-return calculation
+- rolling statistical features
+- chronological data splitting
+- regression model comparison
+- performance evaluation
+
+---
+
+# 🤖 Models Used
 
 ### Baselines
-- Naive baseline: **Tomorrow = Today**
+
+- Naive baseline (Tomorrow = Today)
 - Linear Regression
 
 ### Regularized Regression
+
 - Ridge Regression
 - Lasso Regression
 
-### Non-linear Models (optional)
-- Random Forest Regressor
-- Gradient Boosting / XGBoost (if added)
+These models evaluate:
+
+- linear relationships
+- feature regularization
+- robustness against overfitting
 
 ---
 
-## ✅ Evaluation Strategy (Time-Series Safe)
+# ✅ Evaluation Strategy
 
-Random train/test split can cause **data leakage** in time-series problems.
+Random train/test splits cause **data leakage in time-series problems**.
 
-### Validation Method
-- Chronological split (train → test by time)
-- Walk-forward (rolling) evaluation (recommended extension)
+Therefore the project uses:
 
-### Metrics
+### Time-Series Validation
+
+- chronological train/test split
+- no future information in training data
+
+### Evaluation Metrics
+
 Regression metrics:
-- MAE
-- RMSE
+
+- MAE (Mean Absolute Error)
+- RMSE (Root Mean Squared Error)
 - MAPE (optional)
 
 Directional metric:
-- **Directional Accuracy** (up/down correctness)
+
+- Directional Accuracy (correct prediction of up/down movement)
 
 ---
 
-## 📊 Key Results (Placeholder)
+# 📊 Key Results
 
-> Replace this section with your final results after training.
+Replace this section with final results after training.
 
 | Model | MAE | RMSE | Direction Accuracy |
 |------|-----|------|-------------------|
 | Naive Baseline | - | - | - |
 | Linear Regression | - | - | - |
-| Ridge | - | - | - |
-| Lasso | - | - | - |
+| Ridge Regression | - | - | - |
+| Lasso Regression | - | - | - |
 
-📌 **Takeaway:**  
-The goal is not “perfect prediction,” but **measurable improvement over baseline + explainable drivers**.
+Key takeaway:
 
----
+The objective is not perfect prediction but:
 
-## 📌 Business Interpretation
-
-This project demonstrates how regression modeling can support:
-
-- Risk monitoring
-- Trend detection
-- Decision support
-- Scenario analysis (what signals drive BTC movement?)
+- outperforming naive baselines
+- identifying useful predictive signals
+- maintaining realistic evaluation
 
 ---
 
-## 🔍 What This Project Demonstrates
+# 📉 Example Prediction Visualization
 
-- Time-series regression modeling
-- Feature engineering for financial data
-- Model comparison (baseline → regularization → non-linear)
-- Proper validation to prevent leakage
-- Business-focused interpretation and evaluation
+Typical outputs from the model include:
+
+- Actual vs Predicted returns
+- rolling prediction performance
+- feature importance (for linear models)
+
+Example concept:
+
+Actual BTC Return vs Predicted Return
+
+These visualizations help evaluate **how closely models capture market dynamics**.
 
 ---
 
-## ⚠️ Limitations
+# 📌 Business / Financial Interpretation
 
-Bitcoin markets are highly volatile and influenced by external events.
+Although simplified, similar approaches are used in:
 
-- Regime shifts happen frequently
-- Macro indicators may lag or be incomplete
-- Prediction accuracy can degrade over time
+- quantitative trading research
+- crypto market analysis
+- risk monitoring systems
+- volatility forecasting
+
+Key takeaway:
+
+Even simple regression models can reveal **important predictive signals in financial time-series data**.
+
+---
+
+# ⚠️ Limitations
+
+Bitcoin markets present several challenges:
+
+- high volatility
+- structural regime shifts
+- macro shocks
+- non-linear dynamics
+
+Prediction accuracy may degrade over time.
 
 This project is intended for **learning and portfolio demonstration**, not financial advice.
 
 ---
 
-## 🗂️ Repository Structure (Recommended Upgrade)
-
-```
+# 🗂️ Repository Structure
 
 Bitcoin-Price-Regression-Analysis/
-│
-├── notebooks/
-│   └── bitcoin_regression.ipynb
-│
-├── src/                     # (optional)
-│   ├── data.py
-│   ├── features.py
-│   ├── train.py
-│   └── evaluate.py
-│
-├── reports/
-│   └── figures/
-│
-├── requirements.txt
-└── README.md
 
-```
+notebook/  
+  Bitcoin Price Regression Analysis.ipynb  
+
+src/ (future modularization)  
+  data.py  
+  features.py  
+  train.py  
+  evaluate.py  
+
+reports/  
+  figures/  
+
+requirements.txt  
+README.md  
+
+---
+
+# 🛠 Tools & Libraries
+
+- Python
+- Pandas
+- NumPy
+- Scikit-Learn
+- Jupyter Notebook
+
+---
+
+# 📚 What This Project Demonstrates
+
+This repository demonstrates skills in:
+
+- time-series regression modeling
+- financial feature engineering
+- machine learning experimentation
+- model evaluation and interpretation
+- reproducible analytical workflow
+
+---
+
+# 🚀 Future Improvements
+
+Possible extensions include:
+
+- walk-forward validation
+- XGBoost / Gradient Boosting models
+- LSTM deep learning models
+- crypto-specific market indicators
+- trading strategy backtesting
