@@ -11,7 +11,8 @@
 ![Explainable Modeling](https://img.shields.io/badge/Explainable-Regression-795548)
 ![Quant Analytics](https://img.shields.io/badge/Quant-Analytics-FF7043)
 
-A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and engineered features, focusing on **time-series-safe validation**, **interpretability**, and **realistic evaluation**.
+A regression-based time-series project to predict **Bitcoin short-term returns** using historical market signals and engineered features.  
+The project focuses on **time-series-safe validation**, **interpretable modeling**, and **realistic evaluation**.
 
 ---
 
@@ -21,12 +22,12 @@ This project explores the question:
 
 **Can Bitcoin’s next-day movement be predicted using regression models and time-series features?**
 
-Instead of chasing unrealistic “perfect price prediction”, the project focuses on:
+Instead of chasing unrealistic “perfect price prediction”, the project emphasizes:
 
 - Time-series safe validation (preventing data leakage)
 - Feature engineering from market signals
-- Model comparison with proper baselines
-- Explainable modeling and interpretable features
+- Model comparison with baselines
+- Explainable modeling and interpretable results
 
 ---
 
@@ -42,7 +43,7 @@ log_return(t+1) = log( Price(t+1) / Price(t) )
 
 - Bitcoin prices are **non-stationary**
 - Returns provide **more stable statistical properties**
-- Better suited for regression and forecasting models
+- Better suited for regression modeling
 
 ---
 
@@ -53,41 +54,41 @@ This project uses Bitcoin historical market data.
 ### Data Sources
 
 - Bitcoin price and trading volume
-- Optional macro signals such as:
+- Optional macro indicators such as:
   - S&P 500 return
   - VIX volatility index
   - USD index (DXY)
   - Interest rate indicators
 
 Raw datasets are not included in this repository.  
-Results can be reproduced by downloading the same data sources and running the notebook pipeline.
+Results can be reproduced by downloading the same data sources and running the notebook.
 
 ---
 
 # 🔧 Feature Engineering
 
-The model uses engineered features capturing **trend, momentum, and volatility**.
+Features are designed to capture **momentum, trend, and volatility**.
 
-### Price Features
+### Price-based Features
 
 - Lagged log returns
 - Moving averages (MA7, MA30)
 - Rolling volatility (7-day and 30-day standard deviation)
 - Momentum indicators
 
-### Volume Features
+### Volume-based Features
 
 - Volume change rate
 - Rolling volume Z-score
 
-### Optional Market Indicators
+### Optional Market Signals
 
 - S&P 500 return
 - VIX change
 - USD index movement
 - Interest rate proxy
 
-These features aim to capture **market dynamics influencing short-term Bitcoin movement**.
+These signals help capture **market dynamics influencing short-term Bitcoin movement**.
 
 ---
 
@@ -127,7 +128,7 @@ Key steps include:
 These models evaluate:
 
 - linear relationships
-- feature regularization
+- regularization effects
 - robustness against overfitting
 
 ---
@@ -159,7 +160,7 @@ Directional metric:
 
 # 📊 Key Results
 
-Replace this section with final results after training.
+(Replace this section with final results)
 
 | Model | MAE | RMSE | Direction Accuracy |
 |------|-----|------|-------------------|
@@ -180,43 +181,76 @@ The objective is not perfect prediction but:
 
 # 📉 Example Prediction Visualization
 
-Typical outputs from the model include:
+Example evaluation visualization:
 
-- Actual vs Predicted returns
-- rolling prediction performance
-- feature importance (for linear models)
+Actual Return vs Predicted Return
 
-Example concept:
+This chart helps illustrate how closely the model captures short-term market movements.
 
-Actual BTC Return vs Predicted Return
+You can generate prediction charts from the notebook and place them in:
 
-These visualizations help evaluate **how closely models capture market dynamics**.
+reports/figures/
+
+Then reference them in this README.
+
+---
+
+# 🔎 Feature Importance (Interpretability)
+
+Linear and regularized regression models allow us to interpret the influence of features.
+
+Important predictive signals may include:
+
+- Lagged returns
+- Rolling volatility
+- Volume changes
+- Market momentum indicators
+
+These signals help explain **what drives short-term Bitcoin movement**.
+
+---
+
+# ▶️ How to Run the Project
+
+### 1. Install dependencies
+
+pip install -r requirements.txt
+
+### 2. Launch Jupyter Notebook
+
+jupyter notebook
+
+### 3. Run the notebook
+
+Open:
+
+notebook/Bitcoin Price Regression Analysis.ipynb
+
+and execute all cells to reproduce the analysis.
 
 ---
 
 # 📌 Business / Financial Interpretation
 
-Although simplified, similar approaches are used in:
+Although simplified, similar techniques are used in:
 
 - quantitative trading research
 - crypto market analysis
 - risk monitoring systems
 - volatility forecasting
 
-Key takeaway:
-
-Even simple regression models can reveal **important predictive signals in financial time-series data**.
+Even simple regression models can reveal **meaningful predictive signals in financial time-series data**.
 
 ---
 
 # ⚠️ Limitations
 
-Bitcoin markets present several challenges:
+Bitcoin markets are challenging due to:
 
 - high volatility
-- structural regime shifts
+- regime shifts
 - macro shocks
-- non-linear dynamics
+- non-linear market behavior
 
 Prediction accuracy may degrade over time.
 
@@ -262,8 +296,9 @@ This repository demonstrates skills in:
 - time-series regression modeling
 - financial feature engineering
 - machine learning experimentation
-- model evaluation and interpretation
-- reproducible analytical workflow
+- model evaluation
+- interpretable modeling
+- reproducible analytical workflows
 
 ---
 
@@ -274,5 +309,5 @@ Possible extensions include:
 - walk-forward validation
 - XGBoost / Gradient Boosting models
 - LSTM deep learning models
-- crypto-specific market indicators
+- crypto-specific indicators
 - trading strategy backtesting
