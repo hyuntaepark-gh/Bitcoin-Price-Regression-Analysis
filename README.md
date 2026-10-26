@@ -299,21 +299,63 @@ These findings reinforced an important conclusion:
 **Model performance cannot be evaluated independently of the data, forecasting procedure, and validation assumptions used to produce it.**
 
 ---
+## Selected Research Visualizations
 
-## Visualizations
+The following figures highlight the project's progression from market relationship analysis to volatility forecasting, extreme risk modeling, and out-of-sample evaluation.
 
-The full project includes visualizations covering:
+### 1. Bitcoin and S&P 500 — Rolling Correlation
 
-- Bitcoin and equity market relationships
-- Rolling correlation and market regimes
-- Regression diagnostics and forecast errors
-- GARCH and HAR-X volatility forecasts
-- Historical VaR exceedances
-- EVT-based tail-risk estimates
-- Feature distribution shifts
-- Forecast calibration and model comparison
+![Bitcoin and S&P 500 Rolling Correlation](reports/figures/06_btc_sp500_rolling_correlation.png)
 
-Selected figures can be added to `reports/figures/` for GitHub and LinkedIn portfolio presentation.
+Explored how Bitcoin's relationship with the S&P 500 changed over time rather than assuming a stable correlation across market conditions.
+
+### 2. GARCH Volatility Analysis
+
+![Bitcoin GARCH Volatility](reports/figures/11_garch_volatility_2020.png)
+
+Examined time-varying Bitcoin volatility using GARCH-based modeling, with particular attention to periods of market uncertainty.
+
+### 3. HAR-X Forecasting During Market Stress
+
+![HAR-X Crisis Window Analysis](reports/figures/35_final_HARX_crisis_window.png)
+
+Investigated HAR-X forecasts around periods of elevated volatility to understand the limitations of volatility prediction during market stress.
+
+### 4. Extended HAR-X Forecast Evaluation (2021–2026)
+
+![HAR-X Forecast Performance](reports/figures/LINKEDIN_01_HARX_Performance.png)
+
+Compared sequentially calibrated HAR-X forecasts with a rolling benchmark across 2,090 evaluation dates.
+
+The analysis showed lower average Pinball Loss for the sequentially calibrated HAR-X approach, while also highlighting the importance of calibration and changing market conditions.
+
+### 5. Feature Distribution Shift and Data Quality
+
+![Bitcoin Volume Feature Distribution Shift](reports/figures/LINKEDIN_02_Volume_Feature_Drift.png)
+
+Identified a substantial distribution shift in Bitcoin trading volume features between the historical training data and the extended evaluation period.
+
+This finding motivated additional feature-sensitivity analysis, including models trained without trading volume variables.
+
+### 6. Historical Value at Risk Backtesting
+
+![Bitcoin VaR Backtesting](reports/figures/22_VaR_2020_exceptions.png)
+
+Evaluated historical VaR forecasts by comparing realized market losses against predicted risk thresholds.
+
+The analysis examined model reliability during periods of heightened market volatility.
+
+### 7. Extended VaR Model Evaluation
+
+![Forward VaR Coverage Comparison](reports/figures/LINKEDIN_03_Forward_VaR_Coverage.png)
+
+Compared observed VaR exceedance rates across Gaussian GARCH, GARCH-FHS, GARCH-filtered EVT, and Rolling POT.
+
+The results illustrate how different risk-model assumptions can produce different calibration outcomes.
+
+---
+
+**Research Note:** Figures are based on saved research outputs. Extended evaluations were developed iteratively, and some cross-provider data definitions and R GARCH convergence evidence remain subject to further verification.
 
 ---
 
